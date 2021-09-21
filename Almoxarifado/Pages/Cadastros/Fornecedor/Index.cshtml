@@ -1,0 +1,49 @@
+﻿@page
+@model Almoxarifado.Pages.Fornecedor.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Fornecedores</h1>
+
+<p>
+    <a class="btn btn-primary" asp-page="./Create"> Novo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GFornecedor[0].Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GFornecedor[0].Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GFornecedor[0].CNPJ)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.GFornecedor)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CNPJ)
+            </td>
+            <td>
+                <a class="btn btn-secondary btn-sm" asp-page="./Edit" asp-route-id="@item.Id">Editar</a> |
+                <a class="btn btn-secondary btn-sm" asp-page="./Details" asp-route-id="@item.Id">Detalhes</a> |
+                <a class="btn btn-secondary btn-sm" asp-page="./Delete" asp-route-id="@item.Id">Excluir</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,80 @@
+﻿@page
+@model Almoxarifado.Pages.Fornecedor.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<h1>Create</h1>
+
+<h4>GFornecedor</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="GFornecedor.Nome" class="control-label" ></label>
+                <input asp-for="GFornecedor.Nome" class="form-control" />
+                <span asp-validation-for="GFornecedor.Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GFornecedor.CNPJ" class="control-label"></label>
+                <input asp-for="GFornecedor.CNPJ" class="form-control" />
+                <span asp-validation-for="GFornecedor.CNPJ" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GFornecedor.Endereco" class="control-label"></label>
+                <input asp-for="GFornecedor.Endereco" class="form-control" />
+                <span asp-validation-for="GFornecedor.Endereco" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GFornecedor.Numero" class="control-label"></label>
+                <input asp-for="GFornecedor.Numero" class="form-control" />
+                <span asp-validation-for="GFornecedor.Numero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GFornecedor.Complemento" class="control-label"></label>
+                <input asp-for="GFornecedor.Complemento" class="form-control" />
+                <span asp-validation-for="GFornecedor.Complemento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GFornecedor.Bairro" class="control-label"></label>
+                <input asp-for="GFornecedor.Bairro" class="form-control" />
+                <span asp-validation-for="GFornecedor.Bairro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GFornecedor.Cidade" class="control-label"></label>
+                <input asp-for="GFornecedor.Cidade" class="form-control" />
+                <span asp-validation-for="GFornecedor.Cidade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GFornecedor.Estado" class="control-label"></label>
+                <input asp-for="GFornecedor.Estado" class="form-control" />
+                <span asp-validation-for="GFornecedor.Estado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GFornecedor.Pais" class="control-label"></label>
+                <input asp-for="GFornecedor.Pais" class="form-control" />
+                <span asp-validation-for="GFornecedor.Pais" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GFornecedor.CEP" class="control-label"></label>
+                <input asp-for="GFornecedor.CEP" class="form-control" />
+                <span asp-validation-for="GFornecedor.CEP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

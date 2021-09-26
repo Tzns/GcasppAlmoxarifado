@@ -1,0 +1,53 @@
+﻿@page
+@model Almoxarifado.Pages.Cadastros.Produto.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<<div class="text-danger bg-warning text-center">
+    <h1>ATENÇÃO</h1>
+    <h3>Você tem certeza que deseja excluir?</h3>
+</div>
+<div>
+    <h4>Produto</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GProduto.GPrudutoUnidade)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GProduto.GPrudutoUnidade.Descricao)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GProduto.Codigo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GProduto.Codigo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GProduto.Descricao)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GProduto.Descricao)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GProduto.ContaContabil)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GProduto.ContaContabil)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GProduto.CAEDespesa)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GProduto.CAEDespesa)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="GProduto.Id" />
+        <input type="submit" value="Excluir" class="btn btn-danger" /> |
+        <a class="btn btn-secondary" asp-page="./Index">Voltar</a>
+    </form>
+</div>

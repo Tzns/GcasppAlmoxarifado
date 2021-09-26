@@ -5,31 +5,29 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Almoxarifado.Data;
 using Almoxarifado.Models;
 using Almoxarifado.Repositories;
 
-namespace Almoxarifado.Pages.Fornecedor
+namespace Almoxarifado.Pages.Cadastros.Fornecedor
 {
     public class DeleteModel : PageModel
     {
-        private readonly DataContext _context;
+        private readonly IGFornecedorRepository _repository;
 
-        public DeleteModel(DataContext context)
+
+        public DeleteModel(IGFornecedorRepository reposiory)
         {
-            _context = context;
+            _repository = reposiory;
         }
 
         [BindProperty]
         public GFornecedor GFornecedor { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            GFornecedor = await _context.GFornecedor.FirstOrDefaultAsync(m => m.Id == id);
+            GFornecedor = await _repository.GetById(id);
 
             if (GFornecedor == null)
             {
@@ -38,21 +36,10 @@ namespace Almoxarifado.Pages.Fornecedor
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-                        
-            GFornecedor = await _context.GFornecedor.FindAsync(id);
-            
 
-            if (GFornecedor != null)
-            {
-                _context.GFornecedor.Remove(GFornecedor);
-                await _context.SaveChangesAsync();
-            }
+            await _repository.Delete(id);
 
             return RedirectToPage("./Index");
         }

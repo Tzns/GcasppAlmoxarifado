@@ -6,31 +6,27 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Almoxarifado.Data;
 using Almoxarifado.Models;
 using Almoxarifado.Repositories;
 
-namespace Almoxarifado.Pages.Fornecedor
+namespace Almoxarifado.Pages.Cadastros.Fornecedor
 {
     public class EditModel : PageModel
     {
-        private readonly Almoxarifado.Repositories.DataContext _context;
-
-        public EditModel(Almoxarifado.Repositories.DataContext context)
+        private readonly IGFornecedorRepository _repository;
+        public EditModel(IGFornecedorRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
         [BindProperty]
         public GFornecedor GFornecedor { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            GFornecedor = await _context.GFornecedor.FirstOrDefaultAsync(m => m.Id == id);
+            GFornecedor = await _repository.GetById(id);
 
             if (GFornecedor == null)
             {
@@ -39,39 +35,16 @@ namespace Almoxarifado.Pages.Fornecedor
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
+        
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
+                await _repository.UpdateAsync(GFornecedor);
+                return RedirectToPage("./Index");
+            }
+            else
                 return Page();
-            }
-
-            _context.Attach(GFornecedor).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!GFornecedorExists(GFornecedor.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return RedirectToPage("./Index");
-        }
-
-        private bool GFornecedorExists(int id)
-        {
-            return _context.GFornecedor.Any(e => e.Id == id);
-        }
+        }          
     }
 }

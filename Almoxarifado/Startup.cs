@@ -1,3 +1,5 @@
+using Almoxarifado.Data;
+using Almoxarifado.Models;
 using Almoxarifado.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -21,15 +23,23 @@ namespace Almoxarifado
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        
         public void ConfigureServices(IServiceCollection services)
         {
             string connectionString = Configuration.GetConnectionString("Default");
             services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
-            services.AddRazorPages();
+            services.AddScoped<IGProdutoUnidadeRepository, GProdutoUnidadeRepository>();
+            services.AddScoped<IGFornecedorRepository, GFornecedorRepository>();
+            services.AddScoped<IGProdutoRepository, GProdutoRepository>();
+            services.AddScoped<IGEntradaRepository, GEntradaRepository>();
+            services.AddScoped<IGEntradaItemRepository, GEntradaItemRepository>();
+            services.AddScoped<IGEstoqueRepository, GEstoqueRepository>();
+            services.AddScoped<IGSaidaItemRepository, GSaidaItemRepository>();
+            services.AddScoped<IGSaidaRepository, GSaidaRepository>();
+            services.AddRazorPages();    
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

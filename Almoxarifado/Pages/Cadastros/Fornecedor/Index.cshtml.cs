@@ -5,25 +5,29 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Almoxarifado.Data;
 using Almoxarifado.Models;
 using Almoxarifado.Repositories;
 
-namespace Almoxarifado.Pages.Fornecedor
+namespace Almoxarifado.Pages.Cadastros.Fornecedor
 {
     public class IndexModel : PageModel
+
     {
-        private readonly Almoxarifado.Repositories.DataContext _context;
-
-        public IndexModel(Almoxarifado.Repositories.DataContext context)
+        private readonly IGFornecedorRepository _repository;        
+        public IndexModel(IGFornecedorRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }
-
-        public IList<GFornecedor> GFornecedor { get;set; }
-
-        public async Task OnGetAsync()
+        
+        public IEnumerable<GFornecedor> gFornecedor;
+               
+        [BindProperty(SupportsGet = true)]
+        public string Pesquisar { get; set; }
+        
+        public void OnGet()
         {
-            GFornecedor = await _context.GFornecedor.ToListAsync();
+            gFornecedor = _repository.Search(Pesquisar);
         }
-    }
+    }    
 }

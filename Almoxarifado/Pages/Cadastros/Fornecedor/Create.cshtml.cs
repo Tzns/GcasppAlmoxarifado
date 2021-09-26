@@ -5,18 +5,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Almoxarifado.Data;
 using Almoxarifado.Models;
 using Almoxarifado.Repositories;
 
-namespace Almoxarifado.Pages.Fornecedor
+namespace Almoxarifado.Pages.Cadastros.Fornecedor
 {
     public class CreateModel : PageModel
     {
-        private readonly DataContext _context;
+        private readonly IGFornecedorRepository _repository;
 
-        public CreateModel (DataContext context)
+        public CreateModel(IGFornecedorRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
         public IActionResult OnGet()
@@ -26,8 +27,7 @@ namespace Almoxarifado.Pages.Fornecedor
 
         [BindProperty]
         public GFornecedor GFornecedor { get; set; }
-
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+              
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -35,8 +35,8 @@ namespace Almoxarifado.Pages.Fornecedor
                 return Page();
             }
 
-            _context.GFornecedor.Add(GFornecedor);
-            await _context.SaveChangesAsync();
+            await _repository.CreateAsync(GFornecedor);           
+           
 
             return RedirectToPage("./Index");
         }

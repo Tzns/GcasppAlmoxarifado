@@ -5,31 +5,26 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Almoxarifado.Data;
 using Almoxarifado.Models;
 using Almoxarifado.Repositories;
 
-namespace Almoxarifado.Pages.Fornecedor
+namespace Almoxarifado.Pages.Cadastros.Fornecedor
 {
     public class DetailsModel : PageModel
     {
-        private readonly Almoxarifado.Repositories.DataContext _context;
+        private readonly IGFornecedorRepository _repository;
 
-        public DetailsModel(Almoxarifado.Repositories.DataContext context)
+        public DetailsModel(IGFornecedorRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
         public GFornecedor GFornecedor { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            GFornecedor = await _context.GFornecedor.FirstOrDefaultAsync(m => m.Id == id);
-
+            GFornecedor = await _repository.GetById(id);
             if (GFornecedor == null)
             {
                 return NotFound();

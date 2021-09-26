@@ -1,72 +1,72 @@
 ﻿@page
-@model Almoxarifado.Pages.Fornecedor.DetailsModel
+@model Almoxarifado.Pages.Cadastros.Fornecedor.DetailsModel
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Cadastro</h1>
 
 <div>
-    <h4>GFornecedor</h4>
+    <h4>Fornecedor</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.GFornecedor.Nome)
+            Nome
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.GFornecedor.Nome)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.GFornecedor.CNPJ)
+            CNPJ
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.GFornecedor.CNPJ)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.GFornecedor.Endereco)
+           Endereço
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.GFornecedor.Endereco)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.GFornecedor.Numero)
+           Número
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.GFornecedor.Numero)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.GFornecedor.Complemento)
+           Complemento
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.GFornecedor.Complemento)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.GFornecedor.Bairro)
+            Bairro
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.GFornecedor.Bairro)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.GFornecedor.Cidade)
+          Cidade
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.GFornecedor.Cidade)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.GFornecedor.Estado)
+          Estado
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.GFornecedor.Estado)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.GFornecedor.Pais)
+          País
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.GFornecedor.Pais)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.GFornecedor.CEP)
+           CEP
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.GFornecedor.CEP)
@@ -74,6 +74,6 @@
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.GFornecedor.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a class="btn btn-primary" asp-page="./Edit" asp-route-id="@Model.GFornecedor.Id">Editar</a> |
+    <a class="btn btn-secondary" asp-page="./Index">Voltar</a>
 </div>

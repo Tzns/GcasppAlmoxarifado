@@ -14,10 +14,12 @@ namespace Almoxarifado.Models
         public int Id { get; set; }
 
         [Required]
-        public virtual GEntrada GEntrada { get; set; }
+        public int GEntradaId { get; set; }
+        public GEntrada GEntrada { get; set; }
 
         [Required]
-        public virtual GProduto GProduto { get; set; }
+        public int GProdutoId { get; set; }
+        public GProduto GProduto { get; set; }
 
         [Required(ErrorMessage = "Insira a quantidade.")]
         public long Quantidade { get; set; }

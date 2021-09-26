@@ -17,7 +17,8 @@ namespace Almoxarifado.Models
         public DateTime Data { get; set; }
 
         [Required(ErrorMessage = "Insira um fornecedor.")]
-        public virtual GFornecedor GFornecedor { get; set; }
+        public int GFornecedorId { get; set; }
+        public GFornecedor GFornecedor { get; set; }
 
         [Required(ErrorMessage = "Insira um documento")]
         public string Documento { get; set; }
@@ -25,6 +26,6 @@ namespace Almoxarifado.Models
         public string Empenho { get; set; } = "";
 
         [Required]
-        public virtual List<GEntradaItem> GEntradaItem { get; set; }
+        public  List<GEntradaItem> GEntradaItem { get; set; }
     }
 }

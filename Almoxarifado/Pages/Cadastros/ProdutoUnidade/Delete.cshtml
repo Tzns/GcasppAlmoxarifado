@@ -1,0 +1,35 @@
+﻿@page
+@model Almoxarifado.Pages.Cadastros.ProdutoUnidade.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="text-danger bg-warning text-center">
+    <h1>ATENÇÃO</h1>
+    <h3>Você tem certeza que deseja excluir?</h3>
+</div>
+<div>
+    <h4>Unidade</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GProdutoUnidade.Sigla)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GProdutoUnidade.Sigla)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GProdutoUnidade.Descricao)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GProdutoUnidade.Descricao)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="GProdutoUnidade.Id" />
+        <input type="submit" value="Excluir" class="btn btn-danger" /> |
+        <a class="btn btn-secondary" asp-page="./Index">Voltar</a>
+    </form>
+</div>

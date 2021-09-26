@@ -1,0 +1,53 @@
+﻿@page
+@model Almoxarifado.Pages.Cadastros.Produto.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar</h1>
+
+<h4>Produto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="GProduto.Id" />
+            <div class="form-group">
+                <label> Código</label>
+                <input asp-for="GProduto.Codigo" class="form-control" />
+                <span asp-validation-for="GProduto.Codigo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label> Unidade:     </label>
+                <select class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" asp-for="GProduto.GPrudutoUnidadeId" asp-items="ViewBag.GPrudutoUnidadeId">                    
+                </select>
+                <span asp-validation-for="GProduto.GPrudutoUnidadeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Descrição</label>
+                <input asp-for="GProduto.Descricao" class="form-control" />
+                <span asp-validation-for="GProduto.Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Conta Contábil</label>
+                <input asp-for="GProduto.ContaContabil" class="form-control" />
+                <span asp-validation-for="GProduto.ContaContabil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>CAE Despesa</label>
+                <input asp-for="GProduto.CAEDespesa" class="form-control" />
+                <span asp-validation-for="GProduto.CAEDespesa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Alterar" class="btn btn-primary" />
+                <a class="btn btn-secondary" asp-page="./Index">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,6 +1,48 @@
 ﻿@page
 @model Almoxarifado.Pages.Relatorios.Estoque.IndexModel
-@{
-}
 
-<h1>Pagina do Estoque</h1>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="text-center">
+    <h1>Estoque</h1>
+</div>
+
+
+<table class="table text-center">
+    <thead>
+        <tr>
+            <th>
+                Produto
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GEstoque[0].Quantidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GEstoque[0].ValorTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GEstoque[0].PrecoMedio)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.GEstoque) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GProduto.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecoMedio)
+            </td>            
+        </tr>
+}
+    </tbody>
+</table>

@@ -9,10 +9,17 @@ namespace Almoxarifado.Models
 {
     public class GEstoque
     {
+        public GEstoque(int id, long quantidade, decimal valorTotal, decimal precoMedio)
+        {            
+            Id = id;
+            Quantidade = quantidade;
+            ValorTotal = valorTotal;
+            PrecoMedio = precoMedio;
+        }
 
         [Required]
         public int Id { get; set; }
-        public virtual GProduto GProduto { get; set; }
+        public  GProduto GProduto { get; set; }
 
         [Required]
         public long Quantidade { get; set; }
@@ -22,6 +29,9 @@ namespace Almoxarifado.Models
 
         [Required]
         public decimal PrecoMedio { get; set; }
+
+        
+       
 
     }
 }

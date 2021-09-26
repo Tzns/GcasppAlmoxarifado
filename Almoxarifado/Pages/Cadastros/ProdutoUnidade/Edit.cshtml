@@ -1,0 +1,41 @@
+﻿@page
+@model Almoxarifado.Pages.Cadastros.ProdutoUnidade.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar</h1>
+
+<h4>Unidade</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="GProdutoUnidade.Id" />
+            <div class="form-group">
+                <label asp-for="GProdutoUnidade.Sigla" class="control-label"></label>
+                <input asp-for="GProdutoUnidade.Sigla" class="form-control" />
+                <span asp-validation-for="GProdutoUnidade.Sigla" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GProdutoUnidade.Descricao" class="control-label"></label>
+                <input asp-for="GProdutoUnidade.Descricao" class="form-control" />
+                <span asp-validation-for="GProdutoUnidade.Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Alterar" class="btn btn-primary" />
+                <a class="btn btn-secondary" asp-page="./Index">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+   
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
